@@ -1,5 +1,5 @@
 {
-  "description": "Ensures PayPal best practices are consulted before generating integration code",
+  "description": "Reminds Claude to consult PayPal best-practices and the SDK version routing table before editing PayPal integration code. Informational only — never blocks an edit.",
   "hooks": {
     "PreToolUse": [
       {
@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "If this file edit involves PayPal SDK, API calls, checkout, payments, or PayPal integration code: you MUST first load the paypal-best-practices skill and check the SDK version routing table before proceeding. Detect whether the project uses v5 (paypal.Buttons, sdk/js?client-id=) or v6 (createInstance, web-sdk/v6/core), then read the correct reference file. Return 'approve' to proceed."
+            "prompt": "This hook is informational only and must never block or deny an edit. Look at the file path and content being written. If, and only if, the file is source code (not JSON, YAML, or Markdown) and the change touches PayPal SDK, API, checkout, or payment integration logic, remind the assistant that the paypal-best-practices skill has SDK reference docs for v5 (paypal.Buttons, sdk/js?client-id=) and v6 (createInstance, web-sdk/v6/core), and that paypal-routing handles migrations and intent routing. Otherwise, add no extra commentary. Regardless of the file, you must end your response with the single word 'approve' on its own line — this hook always approves and only ever adds optional context."
           }
         ]
       }

@@ -1,7 +1,7 @@
 ---
 description: Configure PayPal plugin — verify credentials, test MCP server connection, and show active environment
-argument-hint: [mode — e.g. "sandbox", "production", "both", "refresh", "status"]
-allowed-tools: Read, Bash, mcp__paypal-sandbox__*, mcp__paypal-prod__*
+argument-hint: [mode — e.g. "refresh", "status"]
+allowed-tools: Read, Bash, mcp__paypal-sandbox__*
 ---
 
 # PayPal Setup
@@ -16,8 +16,6 @@ Two checks, sandbox-first:
 
 1. **Is the sandbox MCP connected?** Count tools whose name matches `mcp__paypal-sandbox__*` in this session. If any are present, run one lightweight probe (`mcp__paypal-sandbox__list_invoices` with `page_size: 1`). Report the tool count from the session.
 2. **Is the sandbox token in `~/.claude/settings.json`?** Read the file and check whether the `"env"` block has a non-empty `"PAYPAL_SANDBOX_ACCESS_TOKEN"`.
-
-Only check production if the user asks for it (`/paypal:setup production` or `/paypal:setup both`).
 
 #### Report
 
@@ -40,8 +38,8 @@ If the MCP isn't connected OR the probe returns an error (401, SSE header invali
 ```
 
 **If MCP tools aren't loaded at all** (no `mcp__paypal-sandbox__*` tools in the session and `/mcp` doesn't list `paypal-sandbox`): the plugin isn't installed correctly. Fix:
-- Marketplace: `/plugin marketplace add https://github.com/OnePayPalQA/paypalclaudeplugin.git` then `/plugin install paypal-developer-tools@paypalclaudeplugin`
-- Local: `claude --plugin-dir /path/to/paypalclaudeplugin`
+- Marketplace: `/plugin marketplace add paypal/AI-Toolkit` then `/plugin install paypal@paypal-ai-toolkit`
+- Local: `claude --plugin-dir /path/to/AI-Toolkit`
 
 #### Internal knowledge for the LLM (do not surface unless asked)
 
@@ -51,8 +49,6 @@ Two auth paths reach the same PayPal hosted gateway, and they produce different 
 |---|---|---|
 | `paypal-sandbox` | Bearer (env var from `settings.json`) | 31 |
 | `paypal-sandbox` | OAuth (browser flow via `/mcp`) | 4 (PayPal sandbox scope is intentionally limited) |
-| `paypal-prod` | Bearer | 31 |
-| `paypal-prod` | OAuth | 31 |
 
 Rules for using this:
 - Recommend the env-var route by default — it's the only way to get 31 tools in sandbox.
@@ -68,9 +64,8 @@ Likely causes, in order of frequency:
 
 1. **Token expired.** PayPal access tokens last 9 hours. Most common. → Step 3 to regenerate.
 2. **Token has stray whitespace or a newline.** Usually from a copy-paste that picked up the surrounding quote characters, or from a multi-line `~/.zshrc` export that was migrated to `settings.json` without flattening. JSON should reject this, but if it survived, the `Authorization` header will be rejected by Node's HTTP layer (`SSE error: Header has invalid value`). → Open `settings.json`, confirm the value is a single line with no whitespace, regenerate if unsure.
-3. **Wrong environment.** Sandbox token used against `api-m.paypal.com` or live token against sandbox. PayPal returns 401. → Verify which token you generated and confirm `PAYPAL_SANDBOX_ACCESS_TOKEN` (sandbox) vs `PAYPAL_ACCESS_TOKEN` (live) is what you set.
-4. **Gateway rate-limited (`HTTP 429`).** You've been reconnecting too often during testing. Auth is fine — just wait 1–2 minutes. Do not regenerate.
-5. **Network issue.** Behind a corporate VPN/proxy. Check connectivity to `mcp.sandbox.paypal.com` (and `mcp.paypal.com` if testing prod).
+3. **Gateway rate-limited (`HTTP 429`).** You've been reconnecting too often during testing. Auth is fine — just wait 1–2 minutes. Do not regenerate.
+4. **Network issue.** Behind a corporate VPN/proxy. Check connectivity to `mcp.sandbox.paypal.com`.
 
 If none of the above resolve it, go to Step 3 and generate a fresh token from scratch.
 
@@ -78,10 +73,7 @@ If none of the above resolve it, go to Step 3 and generate a fresh token from sc
 
 ### Step 3: Credential Setup
 
-Guide the user through generating an access token. Adapt based on "$ARGUMENTS":
-
-- If `"sandbox"` or no argument: guide sandbox setup
-- If `"production"`: guide production setup
+Guide the user through generating a sandbox access token.
 
 #### Sandbox Setup
 
@@ -115,34 +107,11 @@ header):
 Then FULLY QUIT Claude Code (close the app — not just /clear) and reopen.
 ```
 
-#### Production Setup
-
-```
-Let's set up your PayPal production credentials.
-
-1. Go to: https://developer.paypal.com/dashboard/applications/live
-2. Create a live app or select an existing one
-3. Copy your Client ID and Client Secret
-
-Then generate an access token:
-
-  curl -X POST https://api-m.paypal.com/v1/oauth2/token \
-    -u "YOUR_CLIENT_ID:YOUR_CLIENT_SECRET" \
-    -d "grant_type=client_credentials" \
-    | jq -r .access_token
-
-Paste into ~/.claude/settings.json under "env":
-
-  "PAYPAL_ACCESS_TOKEN": "A21AA…"
-
-FULLY QUIT and reopen Claude Code.
-```
-
 Wait for the user to confirm they've set the token. Then re-verify by attempting an MCP tool call.
 
 **If 401 / Unauthorized:** "Token was rejected. It may be malformed, expired, or copied with a stray newline. Regenerate with the curl command above — copy the value as a single line."
 
-**If timeout / network error:** "Check your network connection. If you're behind a corporate proxy or VPN, you may need to allowlist `mcp.sandbox.paypal.com` and `mcp.paypal.com`."
+**If timeout / network error:** "Check your network connection. If you're behind a corporate proxy or VPN, you may need to allowlist `mcp.sandbox.paypal.com`."
 
 ### Step 3.5: Project Environment Check
 
@@ -227,8 +196,6 @@ After successful connection, present a summary:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Only mention production in this summary if the user ran `/paypal:setup production` or `both`. Otherwise keep the report sandbox-focused — production is an opt-in.
-
 ### Step 5: Suggest Next Steps
 
 Detect PayPal code in the project root:
@@ -263,10 +230,10 @@ You're all set. Try asking me to:
 
 | Error | Likely Cause | Fix |
 |---|---|---|
-| No `mcp__paypal-sandbox__*` tools in session | Plugin not loaded | Install via marketplace or restart: `claude --plugin-dir /path/to/paypalclaudeplugin` |
-| 401 Unauthorized | Token expired, malformed, or wrong environment | Regenerate via the curl in Step 3 and paste a single-line value into `~/.claude/settings.json`, then restart Claude Code |
+| No `mcp__paypal-sandbox__*` tools in session | Plugin not loaded | Install via marketplace or restart: `claude --plugin-dir /path/to/AI-Toolkit` |
+| 401 Unauthorized | Token expired or malformed | Regenerate via the curl in Step 3 and paste a single-line value into `~/.claude/settings.json`, then restart Claude Code |
 | `SSE error: Header has invalid value` | Token in env var contains a newline/whitespace (multi-line `~/.zshrc` export) | Move the token to `~/.claude/settings.json` as a single line |
 | `SSE error: Non-200 status code (429)` or `HTTP 429` | PayPal's hosted gateway is rate-limiting reconnects from the same client (commonly hit when toggling Enable/Authenticate/Reconnect repeatedly during testing) | Wait 1–2 minutes before retrying. Don't change tokens or `.mcp.json` — the auth is fine, the gateway just needs the request rate to cool down. |
 | Sandbox MCP connected but only 4 tools | User authenticated via `/mcp` browser flow instead of setting the token in `settings.json`. PayPal's sandbox caps OAuth scope to 4 tools. | Set `PAYPAL_SANDBOX_ACCESS_TOKEN` in `~/.claude/settings.json`, restart. Don't lecture about OAuth scopes — just give the fix. |
-| Timeout / connection refused | Network, proxy, or VPN blocking | Allowlist `mcp.sandbox.paypal.com` (and `mcp.paypal.com` if using prod) |
+| Timeout / connection refused | Network, proxy, or VPN blocking | Allowlist `mcp.sandbox.paypal.com` |
 | 403 Forbidden | Token valid but missing API permissions | Check app permissions in the PayPal Developer Dashboard |

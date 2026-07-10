@@ -282,7 +282,7 @@ Attempt the auth probe first. If it returns a tool-not-found or connection error
 
 2. **Order probe** — Use `mcp__paypal-sandbox__create_order` to create a \$1.00 test order. If it succeeds, the Orders API integration pattern is sound. Report the order ID.
 
-3. **Webhook probe** — If a webhook endpoint is found in the codebase, run `${CLAUDE_PLUGIN_ROOT}/scripts/verify-webhook.sh --check-endpoint <endpoint>` to test signature verification. This script is bundled with the plugin.
+3. **Webhook probe** — If a webhook endpoint is found in the codebase, inspect its handler for a call to `POST /v1/notifications/verify-webhook-signature` (see the Webhooks checks above) rather than trusting the endpoint blindly. If the PayPal MCP sandbox server exposes a webhook-signature verification tool, prefer calling it directly over static inspection.
 
 4. **Subscription probe** — If subscription code is found, use `mcp__paypal-sandbox__list_subscription_plans` to verify plans exist and are ACTIVE.
 

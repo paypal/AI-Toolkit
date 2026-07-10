@@ -1,2 +1,36 @@
 {
+  "name": "paypal-ai-toolkit",
+  "owner": {
+    "name": "PayPal",
+    "url": "https://developer.paypal.com"
+  },
+  "metadata": {
+    "description": "Claude Code plugin integrating PayPal APIs and MCP server for AI-assisted payment integration development.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "paypal",
+      "description": "A Claude Code plugin that integrates PayPal's APIs and MCP server into your development workflow. Get AI-assisted help with PayPal payments, subscriptions, invoices, disputes, and more — directly in your editor.",
+      "source": "./",
+      "version": "1.0.0",
+      "author": {"name": "PayPal"},
+      "license": "Apache-2.0",
+      "keywords": ["paypal", "payments", "checkout", "subscriptions", "invoices", "disputes", "mcp", "commerce"],
+      "strict": true,
+      "commands": [
+        "./commands/doctor.md",
+        "./commands/explain-error.md",
+        "./commands/sandbox.md",
+        "./commands/setup.md",
+        "./commands/test-accounts.md"
+      ],
+      "skills": [
+        "./skills/paypal-best-practices",
+        "./skills/paypal-routing"
+      ],
+      "mcpServers": ["./.mcp.json"],
+      "hooks": ["./hooks/hooks.json"]
+    }
+  ]
 }

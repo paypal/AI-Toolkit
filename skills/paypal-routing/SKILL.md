@@ -91,7 +91,7 @@ Pack values: `paypal-checkout/standard-checkout`, `paypal-checkout/expanded-chec
 
 ## When to Use MCP Tools Directly
 
-Only use `mcp__paypal-sandbox__*` or `mcp__paypal-prod__*` tools directly when:
+Only use `mcp__paypal-sandbox__*` tools directly when:
 - The user asks to perform a specific PayPal action (create an order, send an invoice, list disputes, capture a payment)
 - The user explicitly asks to call an MCP tool
 - The task is a one-off API operation that doesn't match any command workflow

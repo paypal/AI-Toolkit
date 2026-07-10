@@ -25,10 +25,9 @@ Topic aliases:
 |---|---|---|
 | API base URL | `api-m.sandbox.paypal.com` | `api-m.paypal.com` |
 | Buyer approval | `sandbox.paypal.com` | `paypal.com` |
-| MCP endpoint | `mcp.sandbox.paypal.com/sse` | `mcp.paypal.com/sse` |
 | Credentials | Sandbox app in Dashboard | Live app in Dashboard |
 
-Never mix sandbox and production credentials — they are completely separate environments.
+Never mix sandbox and production credentials — they are completely separate environments. This plugin's MCP server only connects to the sandbox environment (`mcp.sandbox.paypal.com/sse`).
 
 ## Postman
 
