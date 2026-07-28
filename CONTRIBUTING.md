@@ -22,3 +22,4 @@ Since this project is a Claude Code plugin consisting of commands, skills, and h
 2. Implement your changes.
 3. Ensure all modified files and directories follow the existing project layout.
 4. Submit a Pull Request (PR) with a clear description of the changes and the problem they solve.
+5. Include a source or citation for any factual claims when modifying files under `skills` to prevent unsourced claims from causing confusion.
