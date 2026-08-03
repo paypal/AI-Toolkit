@@ -9,6 +9,8 @@ A Claude Code plugin that integrates PayPal's APIs and MCP server into your deve
 - **Hooks** — automatically checks PayPal best practices before Claude writes integration code
 - **MCP Server integration** — connects Claude to PayPal's sandbox MCP servers for direct API operations via natural language
 
+![Demo of installation and usage](https://github.com/user-attachments/assets/787a2b4c-4276-422c-9124-fd535571a68c)
+
 ## Installation
 
 ### Prerequisites
