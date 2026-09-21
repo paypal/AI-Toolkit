@@ -36,5 +36,5 @@ Support: suspend, cancel, and plan revision (upgrade/downgrade via `/revise`). W
 - `PAYMENT.SALE.COMPLETED` (each successful renewal)
 
 ## Live Documentation
-- [Subscriptions guide](https://developer.paypal.com/md/docs/subscriptions/)
+- [Subscriptions guide](https://developer.paypal.com/subscriptions/about.md)
 - [Billing Plans API](https://developer.paypal.com/docs/api/subscriptions/v1/)

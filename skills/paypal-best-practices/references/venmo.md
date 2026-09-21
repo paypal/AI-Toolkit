@@ -11,7 +11,7 @@ description: Pay with Venmo - Venmo button, eligibility check (isFundingEligible
 
 ## Integration
 
-[Pay with Venmo](https://developer.paypal.com/md/docs/checkout/pay-with-venmo/) is available for US merchants and buyers via the JS SDK. Add `enable-funding=venmo` to the SDK URL and render a button with `fundingSource: paypal.FUNDING.VENMO`.
+[Pay with Venmo](https://developer.paypal.com/v5/venmo/integrate.md) is available for US merchants and buyers via the JS SDK. Add `enable-funding=venmo` to the SDK URL and render a button with `fundingSource: paypal.FUNDING.VENMO`.
 
 Venmo only renders when the buyer is eligible — always call `paypal.isFundingEligible(paypal.FUNDING.VENMO)` before rendering and provide a standard PayPal button as the fallback.
 
@@ -19,4 +19,4 @@ On desktop, Venmo requires a Chrome browser with a Venmo cookie. On mobile, it d
 
 ## Live Documentation
 - [Pay with Venmo v6 — see js-sdk-v6.md](js-sdk-v6.md) (`createVenmoOneTimePaymentSession`, `venmo-payments` component)
-- [Pay with Venmo — v5 docs](https://developer.paypal.com/md/docs/checkout/pay-with-venmo/)
+- [Pay with Venmo — v5 docs](https://developer.paypal.com/v5/venmo/integrate.md)

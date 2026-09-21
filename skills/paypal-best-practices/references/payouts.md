@@ -10,7 +10,7 @@ description: PayPal Payouts API - batch payments to sellers, contractors, and cl
 
 ## Overview
 
-The [Payouts API](https://docs.paypal.ai/growth/payouts/overview.md) enables batch payments to multiple recipients in 96 countries across 24 currencies. Access requires approval via the PayPal Developer Dashboard.
+The [Payouts API](https://developer.paypal.com/payouts/overview.md) enables batch payments to multiple recipients in 96 countries across 24 currencies. Access requires approval via the PayPal Developer Dashboard.
 
 Prerequisites: PayPal Business account with verified identity, confirmed email, and sufficient balance.
 
@@ -29,5 +29,5 @@ Rate limit: 400 POST requests per minute — handle HTTP 429 with backoff. Venmo
 Always store `sender_item_id` per recipient for idempotency — reuse on retries to avoid duplicates.
 
 ## Live Documentation
-- [Payouts overview](https://docs.paypal.ai/growth/payouts/overview.md)
+- [Payouts overview](https://developer.paypal.com/payouts/overview.md)
 - [Payouts API reference](https://developer.paypal.com/docs/api/payments.payouts-batch/v1/)

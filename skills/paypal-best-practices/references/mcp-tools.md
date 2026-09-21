@@ -10,7 +10,7 @@ description: PayPal MCP server tool inventory - orders, invoices, subscriptions,
 
 ## Overview
 
-The [PayPal MCP server](https://mcp.paypal.com) ([quickstart](https://docs.paypal.ai/developer/tools/ai/mcp-quickstart.md)), when connected, exposes tools for orders, payments, invoices, subscriptions, disputes, catalog, shipment tracking, and reporting.
+The [PayPal MCP server](https://mcp.paypal.com) ([quickstart](https://developer.paypal.com/ai-tools/mcp-server.md)), when connected, exposes tools for orders, payments, invoices, subscriptions, disputes, catalog, shipment tracking, and reporting.
 
 ## Tool Inventory
 
@@ -33,5 +33,5 @@ Three additional tools — `search_product`, `create_cart`, `checkout_cart` — 
 Prefer MCP tools over raw API calls when the MCP server is available in the agent context. For full control over request structure, fall back to the REST API directly.
 
 ## Live Documentation
-- [MCP quickstart](https://docs.paypal.ai/developer/tools/ai/mcp-quickstart.md)
+- [MCP quickstart](https://developer.paypal.com/ai-tools/mcp-server.md)
 - [MCP server](https://mcp.paypal.com)

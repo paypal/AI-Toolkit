@@ -730,9 +730,9 @@ Official v6 sample repository with JavaScript, TypeScript, and React examples:
 10. Cache access tokens server-side — do not generate per request
 
 ## Live Documentation
-- [v6 Setup Guide](https://docs.paypal.ai/developer/how-to/sdk/js/v6/configuration.md)
-- [v6 API Reference](https://docs.paypal.ai/reference/sdk/js/v6/reference.md)
-- [v6 Card Fields One-Time Checkout](https://docs.paypal.ai/payments/methods/cards/js-sdk-v6-card-fields-one-time.md)
+- [v6 Setup Guide](https://developer.paypal.com/sdk/js/set-up.md)
+- [v6 API Reference](https://developer.paypal.com/sdk/js/reference.md)
+- [v6 Card Fields One-Time Checkout](https://developer.paypal.com/expanded/card-fields.md)
 - [v5 to v6 Upgrade Hub](https://developer.paypal.com/upgrade/ec/guide/Web%20SDK%20v6/)
 - [v6 Sample Integration (GitHub)](https://github.com/paypal-examples/v6-web-sdk-sample-integration)
-- [Save Cards with v6](https://docs.paypal.ai/payments/save/sdk/cards/js-sdk-v6-vault.md)
+- [Save Cards with v6](https://developer.paypal.com/platforms/checkout/save-payment-methods/during-purchase/js-sdk/cards.md)

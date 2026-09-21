@@ -33,6 +33,6 @@ Always include a `PayPal-Request-Id` header with a unique UUID on every POST req
 
 ## Live Documentation
 
-- [Apps, credentials & scopes — v6 docs](https://docs.paypal.ai/developer/how-to/apps-scopes-credentials.md)
+- [Apps, credentials & scopes — v6 docs](https://developer.paypal.com/apps-scopes-and-credentials.md)
 - [Authentication guide — v5 docs](https://developer.paypal.com/api/rest/authentication/)
 - [REST API reference](https://developer.paypal.com/api/rest/)

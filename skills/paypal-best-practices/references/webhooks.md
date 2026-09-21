@@ -37,7 +37,7 @@ Return HTTP 200 immediately from your handler and process events asynchronously,
 Use the [Webhooks Simulator](https://developer.paypal.com/dashboard/webhooksSimulator) for testing without real transactions. Never use production credentials in test code.
 
 ## Live Documentation
-- [Webhook signature verification — v6 docs](https://docs.paypal.ai/reference/api/rest/verify-webhook-signature/verify-webhook-signature.md)
-- [Webhook event format — v6 docs](https://docs.paypal.ai/reference/webhook-events/webhook-format.md)
+- [Webhook signature verification — v6 docs](https://developer.paypal.com/api/webhooks/v1/definitions/verify_webhook_signature.md)
+- [Webhook event format — v6 docs](https://developer.paypal.com/api/webhooks/v1/definitions/webhook.md)
 - [Webhooks guide — v5 docs](https://developer.paypal.com/api/rest/webhooks/)
 - [Webhooks Simulator](https://developer.paypal.com/dashboard/webhooksSimulator)

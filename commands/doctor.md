@@ -72,7 +72,7 @@ Severity levels:
 
 After the report, for every CRITICAL and WARNING issue:
 
-1. Show the **broken code** (exact snippet from the file)
+1. Show the **broken code** (exact snippet from the file) — **except for Credentials & Security findings involving an actual secret value** (hardcoded `PAYPAL_CLIENT_SECRET`, tokens, keys): redact the secret in the snippet (e.g. `PAYPAL_CLIENT_SECRET = "***REDACTED***"`), showing only the surrounding code and the variable/line it's on. Never echo, print, or quote the real secret value in the report or chat.
 2. Show the **fixed code** with explanation
 3. Ask: _"Would you like me to apply this fix?"_ — and apply it if the user says yes
 
@@ -82,12 +82,12 @@ After the report, for every CRITICAL and WARNING issue:
 | ----------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | JS SDK v6 — any v6 check                        | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/js-sdk-v6.md`         | RulesHub: `https://raw.githubusercontent.com/paypal/ruleshub/main/upgrade-to-v6/v5-to-v6-upgrade/rules.md`         |
 | JS SDK v5 — checkout, buttons, hosted fields    | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/checkout.md`          | RulesHub: `https://raw.githubusercontent.com/paypal/ruleshub/main/paypal-checkout/standard-checkout/rules.md`      |
-| Auth, token caching, idempotency keys           | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/authentication.md`    | PayPal docs (v6): `https://docs.paypal.ai/developer/how-to/apps-scopes-credentials.md`                             |
-| Webhooks — verification, idempotency, events    | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/webhooks.md`          | PayPal docs (v6): `https://docs.paypal.ai/reference/api/rest/verify-webhook-signature/verify-webhook-signature.md` |
-| Subscriptions — plans, billing cycles, webhooks | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/subscriptions.md`     | PayPal docs: `https://developer.paypal.com/md/docs/subscriptions/`                                                 |
+| Auth, token caching, idempotency keys           | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/authentication.md`    | PayPal docs (v6): `https://developer.paypal.com/apps-scopes-and-credentials.md`                             |
+| Webhooks — verification, idempotency, events    | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/webhooks.md`          | PayPal docs (v6): `https://developer.paypal.com/api/webhooks/v1/definitions/verify_webhook_signature.md` |
+| Subscriptions — plans, billing cycles, webhooks | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/subscriptions.md`     | PayPal docs: `https://developer.paypal.com/subscriptions/about.md`                                                 |
 | BNPL / Pay Later messaging                      | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/bnpl.md`              | RulesHub: `https://raw.githubusercontent.com/paypal/ruleshub/main/paypal-bnpl-us/rules.md`                         |
 | Venmo eligibility and button                    | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/venmo.md`             | RulesHub: `https://raw.githubusercontent.com/paypal/ruleshub/main/paypal-checkout/expanded-checkout/rules.md`      |
-| Disputes and refunds                            | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/disputes-refunds.md`  | PayPal docs: `https://docs.paypal.ai/growth/disputes/overview.md`                                                  |
+| Disputes and refunds                            | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/disputes-refunds.md`  | PayPal docs: `https://developer.paypal.com/disputes/overview.md`                                                  |
 | Orders API, capture, INSTRUMENT_DECLINED        | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/checkout.md`          | RulesHub: `https://raw.githubusercontent.com/paypal/ruleshub/main/paypal-checkout/standard-checkout/rules.md`      |
 | APMs, Google Pay, Apple Pay, card fields        | `${CLAUDE_PLUGIN_ROOT}/skills/paypal-best-practices/references/expanded-checkout.md` | RulesHub: `https://raw.githubusercontent.com/paypal/ruleshub/main/paypal-checkout/expanded-checkout/rules.md`      |
 

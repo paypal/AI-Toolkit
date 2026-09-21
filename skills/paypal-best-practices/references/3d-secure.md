@@ -11,7 +11,7 @@ description: 3D Secure (3DS) card authentication, liability shift, SCA, and PSD2
 
 ## Overview
 
-[3D Secure](https://developer.paypal.com/md/docs/checkout/advanced/customize/3d-secure/) authenticates cardholders through their card issuer to reduce fraud and shift chargeback liability from merchant to issuer on success. Available in 36 countries across 22 currencies via Advanced Checkout (Advanced Card Fields). Only triggers for enrolled cards.
+[3D Secure](https://developer.paypal.com/v5/expanded/3d-secure/integrate/card-fields.md) authenticates cardholders through their card issuer to reduce fraud and shift chargeback liability from merchant to issuer on success. Available in 36 countries across 22 currencies via Advanced Checkout (Advanced Card Fields). Only triggers for enrolled cards.
 
 ## Response Parameters
 
@@ -36,4 +36,4 @@ Never capture an order when `liability_shift` is `NO` unless you explicitly acce
 For 3DS on Fastlane integrations, see [fastlane.md](fastlane.md) — the flow differs (uses `ThreeDomainSecureClient` or `attributes.verification` on the order, not Advanced Card Fields).
 
 ## Live Documentation
-- [3D Secure guide](https://developer.paypal.com/md/docs/checkout/advanced/customize/3d-secure/)
+- [3D Secure guide](https://developer.paypal.com/v5/expanded/3d-secure/integrate/card-fields.md)

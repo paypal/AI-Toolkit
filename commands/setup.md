@@ -42,21 +42,9 @@ If the MCP isn't connected OR the probe returns an error (401, SSE header invali
 - Marketplace: `/plugin marketplace add paypal/AI-Toolkit` then `/plugin install paypal@paypal-ai-toolkit`
 - Local: `claude --plugin-dir /path/to/AI-Toolkit`
 
-#### Internal knowledge for the LLM (do not surface unless asked)
+Set up the sandbox connection using the env-var token route (`PAYPAL_SANDBOX_ACCESS_TOKEN` in `~/.claude/settings.json`) — this is the standard path and gives the full sandbox tool surface.
 
-Two auth paths reach the same PayPal hosted gateway, and they produce different tool counts. Keep this in mind when interpreting results, but don't lead with it:
-
-| Server           | Auth path                             | Tools                                             |
-| ---------------- | ------------------------------------- | ------------------------------------------------- |
-| `paypal-sandbox` | Bearer (env var from `settings.json`) | 31                                                |
-| `paypal-sandbox` | OAuth (browser flow via `/mcp`)       | 4 (PayPal sandbox scope is intentionally limited) |
-
-Rules for using this:
-
-- Recommend the env-var route by default — it's the only way to get 31 tools in sandbox.
-- If a sandbox user is seeing exactly 4 tools, they're on OAuth — gently suggest setting the token in `settings.json` to unlock the full toolkit. Do not lecture about scopes; just say "to get the full 31-tool surface, set `PAYPAL_SANDBOX_ACCESS_TOKEN` in `~/.claude/settings.json`."
-- Don't bring up OAuth vs Bearer terminology unless the user asks "why am I only seeing 4 tools?" — until then it's noise.
-- The `SSE error: Header has invalid value` failure mode means the env var is set but contains whitespace/newlines (usually from a multi-line `~/.zshrc` export). Fix: regenerate, put on a single line in `settings.json`.
+The `SSE error: Header has invalid value` failure mode means the env var is set but contains whitespace/newlines (usually from a multi-line `~/.zshrc` export). Fix: regenerate, put on a single line in `settings.json`.
 
 ### Step 2: Diagnose why a set token still fails
 
@@ -151,13 +139,14 @@ grep -rl "web-sdk/v6/core\|createInstance\|paypal-payments" --include="*.js" --i
       MCP auth (which uses PAYPAL_*_ACCESS_TOKEN in settings.json).
   ```
 
-- If `.env` exists → check it has `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` set (non-empty):
+- If `.env` exists → check it has `PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` set (non-empty), without ever printing the values:
 
   ```bash
-  grep -E "^PAYPAL_CLIENT_ID=.+|^PAYPAL_CLIENT_SECRET=.+" .env
+  grep -q "^PAYPAL_CLIENT_ID=.\+" .env && echo "PAYPAL_CLIENT_ID: set" || echo "PAYPAL_CLIENT_ID: missing"
+  grep -q "^PAYPAL_CLIENT_SECRET=.\+" .env && echo "PAYPAL_CLIENT_SECRET: set" || echo "PAYPAL_CLIENT_SECRET: missing"
   ```
 
-  If missing → flag which keys are absent.
+  If missing → flag which keys are absent. Never echo, log, or otherwise surface the actual value of `.env` contents.
 
 - If no `.env.sample` and no `.env` but v6 signals detected → flag it:
 
@@ -243,6 +232,5 @@ You're all set. Try asking me to:
 | 401 Unauthorized                                     | Token expired or malformed                                                                                                                                    | Regenerate via the curl in Step 3 and paste a single-line value into `~/.claude/settings.json`, then restart Claude Code                       |
 | `SSE error: Header has invalid value`                | Token in env var contains a newline/whitespace (multi-line `~/.zshrc` export)                                                                                 | Move the token to `~/.claude/settings.json` as a single line                                                                                   |
 | `SSE error: Non-200 status code (429)` or `HTTP 429` | PayPal's hosted gateway is rate-limiting reconnects from the same client (commonly hit when toggling Enable/Authenticate/Reconnect repeatedly during testing) | Wait 1–2 minutes before retrying. Don't change tokens or `.mcp.json` — the auth is fine, the gateway just needs the request rate to cool down. |
-| Sandbox MCP connected but only 4 tools               | User authenticated via `/mcp` browser flow instead of setting the token in `settings.json`. PayPal's sandbox caps OAuth scope to 4 tools.                     | Set `PAYPAL_SANDBOX_ACCESS_TOKEN` in `~/.claude/settings.json`, restart. Don't lecture about OAuth scopes — just give the fix.                 |
 | Timeout / connection refused                         | Network, proxy, or VPN blocking                                                                                                                               | Allowlist `mcp.sandbox.paypal.com`                                                                                                             |
 | 403 Forbidden                                        | Token valid but missing API permissions                                                                                                                       | Check app permissions in the PayPal Developer Dashboard                                                                                        |

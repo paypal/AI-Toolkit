@@ -11,7 +11,7 @@ description: PayPal Buy Now Pay Later (BNPL) - installments, Pay in 4, Pay Later
 
 ## Integration
 
-[BNPL](https://developer.paypal.com/md/docs/checkout/pay-later/us/) is surfaced through the JS SDK and Orders API v2. Add `components=messages` to the SDK URL to render promotional messaging banners using `paypal.Messages({ amount, pageType })` on product detail, cart, and checkout pages — highest-impact placement for conversion. Render the Pay Later button with `fundingSource: paypal.FUNDING.PAYLATER`.
+[BNPL](https://developer.paypal.com/v5/pay-later/integrate.md) is surfaced through the JS SDK and Orders API v2. Add `components=messages` to the SDK URL to render promotional messaging banners using `paypal.Messages({ amount, pageType })` on product detail, cart, and checkout pages — highest-impact placement for conversion. Render the Pay Later button with `fundingSource: paypal.FUNDING.PAYLATER`.
 
 PayPal automatically determines buyer eligibility — no separate API call needed. Merchants receive the full amount upfront. Always use `intent=CAPTURE` (not `intent=subscription`) for BNPL flows.
 
@@ -32,7 +32,7 @@ Always check the buyer's country and currency before rendering BNPL messaging or
 
 ## Live Documentation
 - [Pay Later / BNPL v6 — see js-sdk-v6.md](js-sdk-v6.md) (`createPayLaterOneTimePaymentSession`, `createPayPalMessages`)
-- [Pay Later overview — v5 docs](https://developer.paypal.com/md/docs/checkout/pay-later/us/)
-- [BNPL messaging — v5 docs](https://developer.paypal.com/docs/checkout/pay-later/us/integrate/messaging/)
+- [Pay Later overview — v5 docs](https://developer.paypal.com/v5/pay-later/integrate.md)
+- [BNPL messaging — v5 docs](https://developer.paypal.com/v5/pay-later/integrate.md)
 
 For the latest country/currency availability, fetch the docs link above if WebSearch is available.

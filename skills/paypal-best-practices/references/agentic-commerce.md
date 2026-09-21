@@ -10,7 +10,7 @@ description: PayPal Agentic Commerce - AI shopping agents, Store Sync, Agent Rea
 
 ## Overview
 
-[Agentic Commerce](https://docs.paypal.ai/growth/agentic-commerce/overview.md) enables AI shopping assistants to discover products, build carts, and complete PayPal purchases on behalf of buyers.
+[Agentic Commerce](https://developer.paypal.com/agentic-commerce-services/about.md) enables AI shopping assistants to discover products, build carts, and complete PayPal purchases on behalf of buyers.
 
 Two components:
 - **Store Sync** — syncs your product catalog and order management system so AI agents can access inventory and place orders directly
@@ -24,7 +24,7 @@ Your MCP server must implement a `complete_checkout` tool that receives the toke
 
 Supported payment methods: `card`, `applepay`, `googlepay`. Transactions initiated via ChatGPT are tagged with `facilitator_details` for filtering in the Braintree Control Panel.
 
-Agentic Commerce is early-access — request access via the form on docs.paypal.ai before building.
+Agentic Commerce is early-access — request access via [this form](https://www.paypal.com/us/business/ai#form) before building.
 
 ## Live Documentation
-- [Agentic Commerce overview](https://docs.paypal.ai/growth/agentic-commerce/overview.md)
+- [Agentic Commerce overview](https://developer.paypal.com/agentic-commerce-services/about.md)

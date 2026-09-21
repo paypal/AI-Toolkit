@@ -10,7 +10,7 @@ description: PayPal Invoicing API - create, send, and track itemized invoices, r
 
 ## Overview
 
-The [Invoicing API](https://docs.paypal.ai/growth/grow-business/invoicing/overview.md) (`/v2/invoicing/invoices`) lets merchants programmatically create, send, and track itemized invoices.
+The [Invoicing API](https://developer.paypal.com/invoicing/about.md) (`/v2/invoicing/invoices`) lets merchants programmatically create, send, and track itemized invoices.
 
 Two primary steps:
 1. **Create a draft** — `POST /v2/invoicing/invoices`
@@ -25,5 +25,5 @@ For offline payments (check, wire transfer), use the manual payment recording en
 The Invoicing API is distinct from the MCP `create_invoice` tool — use the REST API directly for full control over invoice structure.
 
 ## Live Documentation
-- [Invoicing overview](https://docs.paypal.ai/growth/grow-business/invoicing/overview.md)
+- [Invoicing overview](https://developer.paypal.com/invoicing/about.md)
 - [Invoicing API reference](https://developer.paypal.com/docs/api/invoicing/v2/)

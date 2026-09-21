@@ -60,8 +60,8 @@ When the PayPal MCP server is connected, prefer MCP tools for live operations (c
 ## Out of Scope
 
 This skill does NOT cover:
-- PayPal Commerce Platform (multi-party marketplaces) — see [Commerce Platform docs](https://developer.paypal.com/md/docs/multiparty/)
-- PayPal Mobile SDKs (iOS/Android native) — see [Mobile SDK docs](https://developer.paypal.com/md/sdk/mobile/)
+- PayPal Commerce Platform (multi-party marketplaces) — see [Commerce Platform docs](https://developer.paypal.com/platforms/overview.md)
+- PayPal Mobile SDKs (iOS/Android native) — see [Mobile SDK docs](https://developer.paypal.com/developer-resources.md#sdks)
 - Braintree direct integration (non-Agentic) — see [Braintree docs](https://developer.paypal.com/braintree/docs)
 - Zettle POS / PayPal Here — see [Zettle developer docs](https://developer.zettle.com)
 - Tax calculation or compliance

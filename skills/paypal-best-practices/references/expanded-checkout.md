@@ -34,6 +34,6 @@ Both Apple Pay and Google Pay require enabling the feature in the PayPal Develop
 Deferred payment — Germany only, B2C only. Buyers pay within 30 days via bank transfer to Ratepay; merchants funded immediately by PayPal. Requires: German VAT ID, PayPal approval, €5–€2,500 range, shipment within 7 days, mandatory legal disclosures, shipment tracking via Add Tracking API. Not available for digital goods, vouchers, or gift cards.
 
 ## Live Documentation
-- [Expanded Checkout](https://developer.paypal.com/md/docs/checkout/apm/)
-- [Apple Pay integration](https://developer.paypal.com/md/docs/checkout/apm/apple-pay/)
-- [Google Pay integration](https://developer.paypal.com/md/docs/checkout/apm/google-pay/)
+- [Expanded Checkout](https://developer.paypal.com/v5/expanded/overview.md)
+- [Apple Pay integration](https://developer.paypal.com/v5/apple-pay/integrate.md)
+- [Google Pay integration](https://developer.paypal.com/v5/google-pay/integrate.md)

@@ -15,7 +15,7 @@ The latest PayPal REST API uses versioned endpoints — Orders API v2 (`/v2/chec
 
 ## JS SDK
 
-The primary integration surface for web checkout is the [PayPal JS SDK](https://developer.paypal.com/md/sdk/js/reference/) loaded from `https://www.paypal.com/sdk/js`. It supports PayPal, Venmo, Pay Later, and Advanced Card Fields from a single script tag. Prioritize the JS SDK with `createOrder` and `onApprove` callbacks for browser-based integrations. For custom card UI, recommend [Advanced Card Fields](https://developer.paypal.com/docs/checkout/advanced/) (iframe-based, PCI-compliant). Never recommend the legacy Hosted Fields — advise migration to Advanced Card Fields.
+The primary integration surface for web checkout is the [PayPal JS SDK](https://developer.paypal.com/sdk/js/v5/reference.md) loaded from `https://www.paypal.com/sdk/js`. It supports PayPal, Venmo, Pay Later, and Advanced Card Fields from a single script tag. Prioritize the JS SDK with `createOrder` and `onApprove` callbacks for browser-based integrations. For custom card UI, recommend [Advanced Card Fields](https://developer.paypal.com/docs/checkout/advanced/) (iframe-based, PCI-compliant). Never recommend the legacy Hosted Fields — advise migration to Advanced Card Fields.
 
 ## React
 
@@ -31,14 +31,14 @@ Buttons render all eligible funding sources automatically by default. Key style 
 
 ## Payment Links
 
-[Payment Links](https://docs.paypal.ai/payments/pay-links-buttons.md) are shareable URLs for accepting payments without a website. No-code: create from the PayPal Business Dashboard. Programmatic: `POST /v1/checkout/payment-resources` with `type: "BUY_NOW"`, `integration_mode: "LINK"`. Supports PayPal, Pay Later, Venmo, Apple Pay, and major cards across 200+ countries and 24 currencies.
+[Payment Links](https://developer.paypal.com/payment-links-buttons/overview.md) are shareable URLs for accepting payments without a website. No-code: create from the PayPal Business Dashboard. Programmatic: `POST /v1/checkout/payment-resources` with `type: "BUY_NOW"`, `integration_mode: "LINK"`. Supports PayPal, Pay Later, Venmo, Apple Pay, and major cards across 200+ countries and 24 currencies.
 
 ## Donations
 
-The [Donate SDK](https://developer.paypal.com/docs/checkout/standard/) lets nonprofits add a PayPal Donate button via `https://www.paypalobjects.com/donate/sdk/donate-sdk.js`. Render with `hosted_button_id` or `business` email. Donations use a popup modal with no `createOrder`/`onApprove` callbacks.
+The [Donate SDK](https://developer.paypal.com/sdk/donate.md) lets nonprofits add a PayPal Donate button via `https://www.paypalobjects.com/donate/sdk/donate-sdk.js`. Render with `hosted_button_id` or `business` email. Donations use a popup modal with no `createOrder`/`onApprove` callbacks.
 
 ## Live Documentation
 - [Orders API v2 reference](https://developer.paypal.com/docs/api/orders/v2/)
-- [JS SDK reference](https://developer.paypal.com/md/sdk/js/reference/)
+- [JS SDK reference](https://developer.paypal.com/sdk/js/v5/reference.md)
 - [React PayPal JS](https://github.com/paypal/paypal-js)
-- [Payment Links](https://docs.paypal.ai/payments/pay-links-buttons.md)
+- [Payment Links](https://developer.paypal.com/payment-links-buttons/overview.md)

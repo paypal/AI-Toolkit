@@ -14,7 +14,7 @@ Proactively issue refunds via `POST /v2/payments/captures/{id}/refund` to preven
 
 ## Dispute Categories
 
-[Disputes](https://docs.paypal.ai/growth/disputes/overview.md) fall into two categories:
+[Disputes](https://developer.paypal.com/disputes/overview.md) fall into two categories:
 - **Internal disputes** — filed through PayPal's Resolution Center; parties resolve directly before PayPal adjudicates
 - **External disputes** — chargebacks and ACH returns filed with banks; PayPal intermediates between merchant and issuer
 
@@ -36,5 +36,5 @@ Always check the `links` array (HATEOAS) and `allowed_response_options` before c
 - `PAYMENT.CAPTURE.REFUNDED`
 
 ## Live Documentation
-- [Disputes API reference](https://docs.paypal.ai/growth/disputes/handle-disputes/use-disputes-api.md)
-- [Disputes overview](https://docs.paypal.ai/growth/disputes/overview.md)
+- [Disputes API reference](https://developer.paypal.com/platforms/disputes/handle-disputes/use-disputes-api.md)
+- [Disputes overview](https://developer.paypal.com/disputes/overview.md)
