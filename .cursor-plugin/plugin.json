@@ -1,0 +1,17 @@
+{
+  "name": "paypal",
+  "version": "1.2.0",
+  "description": "PayPal development plugin for Cursor — integrate payments, subscriptions, invoices, disputes, and more using PayPal's APIs and MCP server",
+  "author": {
+    "name": "PayPal",
+    "url": "https://developer.paypal.com"
+  },
+  "homepage": "https://developer.paypal.com/docs/",
+  "repository": "https://github.com/paypal/AI-Toolkit",
+  "license": "Apache-2.0",
+  "keywords": ["paypal", "payments", "checkout", "subscriptions", "invoices", "disputes", "mcp", "commerce"],
+  "logo": "assets/Avatars-Square-PayPal-RGB.svg",
+  "skills": "./skills/",
+  "commands": "./commands/",
+  "mcpServers": "./.mcp.json"
+}

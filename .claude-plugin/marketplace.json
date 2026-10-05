@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Plugin integrating PayPal APIs and MCP server for AI-assisted payment integration development.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "paypal",
       "description": "A plugin that integrates PayPal's APIs and MCP server into your development workflow. Get AI-assisted help with PayPal payments, subscriptions, invoices, disputes, and more — directly in your editor/terminal.",
       "source": "./",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {"name": "PayPal"},
       "license": "Apache-2.0",
       "keywords": ["paypal", "payments", "checkout", "subscriptions", "invoices", "disputes", "mcp", "commerce"],

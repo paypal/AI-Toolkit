@@ -1,0 +1,25 @@
+{
+  "name": "paypal-ai-toolkit",
+  "owner": {
+    "name": "PayPal",
+    "url": "https://developer.paypal.com"
+  },
+  "metadata": {
+    "description": "PayPal AI toolkit plugins for Cursor",
+    "version": "1.2.0"
+  },
+  "plugins": [
+    {
+      "name": "paypal",
+      "source": "./",
+      "description": "A plugin that integrates PayPal's APIs and MCP server into your development workflow. Get AI-assisted help with PayPal payments, subscriptions, invoices, disputes, and more — directly in your editor/terminal.",
+      "version": "1.2.0",
+      "author": { "name": "PayPal" },
+      "license": "Apache-2.0",
+      "homepage": "https://developer.paypal.com/docs/",
+      "keywords": ["paypal", "payments", "checkout", "subscriptions", "invoices", "disputes", "mcp", "commerce"],
+      "logo": "assets/Avatars-Square-PayPal-RGB.svg",
+      "category": "Finance"
+    }
+  ]
+}

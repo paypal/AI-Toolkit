@@ -23,6 +23,14 @@ codex plugin marketplace add /path/to/AI-Toolkit
 codex plugin add paypal@paypal-ai-toolkit
 ```
 
+**Cursor**
+
+```bash
+cursor-agent plugin marketplace add /path/to/AI-Toolkit
+```
+
+Then install `paypal` from **Customize** or `/plugin`, reload the window, and confirm skills, commands, and the sandbox MCP server.
+
 Then manually test and verify the behavior of any commands or skills you modified or added.
 
 ## Commit Messages
