@@ -124,13 +124,13 @@ Restart Cursor or run **Developer: Reload Window**, then confirm skills, command
    PAYPAL_SANDBOX_ACCESS_TOKEN = "A21AA…"
    ```
 
-   **Cursor** — set `PAYPAL_SANDBOX_ACCESS_TOKEN` in the environment Cursor is launched with if you want live MCP calls. Skills and commands work without it.
+   **Cursor** — after installing the plugin, open **Customize → Plugins → PayPal → Configure** and paste the token. Cursor stores it and substitutes `${PAYPAL_SANDBOX_ACCESS_TOKEN}` in `.mcp.json`. A GUI-launched Cursor does not inherit `export` from `~/.zshrc`.
 
 3. **Fully quit and reopen** the agent (close the app — not just `/clear`).
 
 4. In Claude Code, run `/paypal:setup` to verify. In Codex or Cursor, ask the agent to list PayPal MCP tools or create a sandbox invoice.
 
-> **Use the agent config file, not `~/.zshrc`.** GUI launches don't source `~/.zshrc`, and a line-wrapped `export` embeds a newline in the token that breaks the HTTP header.
+> **Use the agent config or Cursor plugin Configure panel, not `~/.zshrc`.** GUI launches don't source `~/.zshrc`, and a line-wrapped `export` embeds a newline in the token that breaks the HTTP header.
 
 Tokens expire in up to 8 hours depending on scope — check the `expires_in` field in the response. Run `/paypal:setup refresh` when you hit a 401.
 
@@ -171,7 +171,7 @@ The plugin connects to PayPal's sandbox MCP server, which exposes tools for:
 
 ### Transport and environments
 
-The server uses **SSE** at the `/sse` path. `paypal-sandbox` activates once you set `PAYPAL_SANDBOX_ACCESS_TOKEN` in `~/.claude/settings.json` (Claude Code), `~/.codex/config.toml` (Codex), or the environment Cursor is launched with.
+The server uses **SSE** at the `/sse` path. `paypal-sandbox` activates once you set `PAYPAL_SANDBOX_ACCESS_TOKEN` in `~/.claude/settings.json` (Claude Code), `~/.codex/config.toml` (Codex), or **Customize → Plugins → PayPal → Configure** (Cursor).
 
 ## Skills
 

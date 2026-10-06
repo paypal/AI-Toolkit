@@ -13,5 +13,16 @@
   "logo": "assets/Avatars-Square-PayPal-RGB.svg",
   "skills": "./skills/",
   "commands": "./commands/",
-  "mcpServers": "./.mcp.json"
+  "mcpServers": "./.mcp.json",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "PAYPAL_SANDBOX_ACCESS_TOKEN": {
+        "type": "string",
+        "title": "PayPal Sandbox Access Token",
+        "description": "OAuth token for the PayPal sandbox MCP server"
+      }
+    },
+    "required": ["PAYPAL_SANDBOX_ACCESS_TOKEN"]
+  }
 }
