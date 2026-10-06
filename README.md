@@ -77,18 +77,20 @@ Once the plugin is listed on the Cursor marketplace, you can also install it fro
 
 #### Local / development install
 
-Copy the repo into Cursor's local plugin folder (symlinks that point outside this folder are skipped):
+Load the checkout directly (no marketplace or admin setting required):
+
+```bash
+git clone https://github.com/paypal/AI-Toolkit.git
+cursor-agent --plugin-dir /path/to/AI-Toolkit
+```
+
+You can also copy the repo into Cursor's local plugin folder. This requires **Allow Local Plugin Imports** (Dashboard → Settings → Security & Identity → Marketplace and Plugins), which is off by default on some teams. Symlinks that point outside this folder are skipped:
 
 ```bash
 git clone https://github.com/paypal/AI-Toolkit.git ~/.cursor/plugins/local/paypal
 ```
 
-Or add a local checkout as a marketplace:
-
-```bash
-git clone https://github.com/paypal/AI-Toolkit.git
-cursor-agent plugin marketplace add /path/to/AI-Toolkit
-```
+`cursor-agent plugin marketplace add` only accepts a git URL (for example `https://github.com/paypal/AI-Toolkit`), not a local path.
 
 Restart Cursor or run **Developer: Reload Window**, then confirm skills, commands, and `paypal-sandbox` in **Customize**.
 
