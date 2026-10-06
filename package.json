@@ -1,8 +1,8 @@
 {
   "name": "paypal",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
-  "description": "PayPal development plugin for Claude Code, Codex, and other AI coding agents — integrate payments, subscriptions, invoices, disputes, and more using PayPal's APIs and MCP server",
+  "description": "PayPal development plugin for Claude Code, Codex, Cursor, and other AI coding agents — integrate payments, subscriptions, invoices, disputes, and more using PayPal's APIs and MCP server",
   "author": {
     "name": "PayPal",
     "url": "https://developer.paypal.com"
