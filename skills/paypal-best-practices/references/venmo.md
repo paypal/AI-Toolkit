@@ -1,6 +1,6 @@
 ---
 name: paypal-venmo
-description: Pay with Venmo - Venmo button, eligibility check (isFundingEligible), and Venmo standalone checkout for US merchants and buyers.
+description: Pay with Venmo - Venmo button, eligibility check (Buttons().isEligible()), and Venmo standalone checkout for US merchants and buyers.
 ---
 
 # Pay with Venmo
@@ -13,7 +13,16 @@ description: Pay with Venmo - Venmo button, eligibility check (isFundingEligible
 
 [Pay with Venmo](https://developer.paypal.com/v5/venmo/integrate.md) is available for US merchants and buyers via the JS SDK. Add `enable-funding=venmo` to the SDK URL and render a button with `fundingSource: paypal.FUNDING.VENMO`.
 
-Venmo only renders when the buyer is eligible — always call `paypal.isFundingEligible(paypal.FUNDING.VENMO)` before rendering and provide a standard PayPal button as the fallback.
+Venmo only renders when the buyer is eligible — instantiate the button with `fundingSource: paypal.FUNDING.VENMO` and check `.isEligible()` on that instance before rendering, and provide a standard PayPal button as the fallback:
+
+```js
+const venmoButton = paypal.Buttons({ fundingSource: paypal.FUNDING.VENMO, /* ... */ });
+if (venmoButton.isEligible()) {
+  venmoButton.render("#venmo-button-container");
+}
+```
+
+There is no standalone `paypal.isFundingEligible()` function in the current JS SDK — eligibility is always checked via `.isEligible()` on a `Buttons()` instance.
 
 On desktop, Venmo requires a Chrome browser with a Venmo cookie. On mobile, it deep-links to the Venmo native app. Venmo uses USD only and flows through the same Orders API v2 — no separate API integration is required. After capture, confirm the payment method via `payment_source.venmo` in the response.
 

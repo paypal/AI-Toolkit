@@ -191,7 +191,7 @@ Apply only the checks for the detected version. If both v5 and v6 signals appear
 
 | Check                                                                                | Severity if failing |
 | ------------------------------------------------------------------------------------ | ------------------- |
-| Venmo button rendered without `paypal.isFundingEligible(paypal.FUNDING.VENMO)` guard | WARNING             |
+| Venmo button rendered without a `paypal.Buttons({ fundingSource: paypal.FUNDING.VENMO }).isEligible()` guard | WARNING             |
 | `enable-funding=venmo` missing from SDK script URL                                   | CRITICAL            |
 | Venmo used with non-USD currency                                                     | CRITICAL            |
 | No fallback PayPal button alongside Venmo button                                     | WARNING             |
