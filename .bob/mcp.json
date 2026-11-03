@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "paypal-sandbox": {
+      "type": "streamable-http",
+      "url": "https://mcp.sandbox.paypal.com/mcp"
+    }
+  }
+}

@@ -10,26 +10,30 @@ If you find a bug, encounter an issue, or want to suggest an improvement, please
 
 This project is an agent plugin consisting of commands, skills, and hooks. Clone the repository, then load it in the agent you are testing:
 
-**Claude Code**
+### Claude Code
 
 ```bash
 claude --plugin-dir /path/to/AI-Toolkit
 ```
 
-**OpenAI Codex**
+### OpenAI Codex
 
 ```bash
 codex plugin marketplace add /path/to/AI-Toolkit
 codex plugin add paypal@paypal-ai-toolkit
 ```
 
-**Cursor**
+### Cursor
 
 ```bash
 cursor-agent --plugin-dir /path/to/AI-Toolkit
 ```
 
 Then confirm skills, commands, and the sandbox MCP server in **Customize**. `plugin marketplace add` only accepts a git URL, not a local path. Copying into `~/.cursor/plugins/local/paypal` also works if **Allow Local Plugin Imports** is enabled for your team.
+
+### IBM Bob
+
+Open the cloned repository in IBM Bob. Bob automatically discovers and loads skills from `.bob/skills/` and the sandbox MCP server from `.bob/mcp.json`.
 
 Then manually test and verify the behavior of any commands or skills you modified or added.
 
